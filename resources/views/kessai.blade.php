@@ -35,7 +35,6 @@
                 <div id="n_area_00" class="navi_area center">
                     <img src="{{ asset('img/form_flow01_pc.png') }}" style="max-width: 700px;width: 100%;">
                 </div>
-                <p>aaaaaaaaaaaaaaa</p>
                 <div id="n_area_10" class="navi_area center">
                     <img src="{{ asset('img/form_flow01_sp.png')}}" style="width: 100%;">
                 </div>
