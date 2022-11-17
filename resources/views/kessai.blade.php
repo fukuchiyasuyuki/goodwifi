@@ -11,14 +11,13 @@
     <link rel="stylesheet" href="{{ asset('css/contents.css') }}">
     <link rel="stylesheet" href="{{ asset('css/tablet.css') }}">
     <link rel="stylesheet" href="{{ asset('css/smart.css') }}">
+    <script src="{{ url('https://code.jquery.com/jquery-1.11.3.min.js')}}"></script>
     <script src="{{ asset('https://ajaxzip3.github.io/ajaxzip3.js')}}" charset="UTF-8"></script>
-    <script src="{{ asset('https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js')}}" type="text/javascript"></script>
     <script src="{{ asset('js/jquery.validationEngine.js')}}"></script>
     <script src="{{ asset('js/jquery.validationEngine-ja.js')}}"></script>
     <script src="{{ asset('js/jquery.autoKana.js')}}"></script>
     <script src="{{ asset('https://js.stripe.com/v3/')}}"></script>
     <script type="text/javascript" src="{{('https://apps.paidy.com/')}}"></script>
-    <script src="client.js" defer></script>
     <link rel="shortcut icon" href="{{ asset('img/favicon.ico')}}" />
     <link rel="apple-touch-icon" href="{{ asset('img/logo144.png')}}" sizes="144x144">
     <link rel="icon" href="{{ asset('img/logo96.png')}}" sizes="96x96">
@@ -39,7 +38,7 @@
                     <img src="{{ asset('img/form_flow01_sp.png')}}" style="width: 100%;">
                 </div>
                 <div class="form_box">
-                    <form id="form1" name="form1" method="post" action="">
+                    <form id="form1" name="form1">
                         <div style="margin-bottom: 20px;">
                             <h2>ご希望の料金プランを選択ください</h2>
                             <label >
@@ -710,27 +709,27 @@
                                     <dl class="payment-dl">
                                         <dt class="payment-dt">カード名義人 <span class="">*</span></dt>
                                         <dd class="payment-dd">
-                                            <input type="text" name="card_name" class="payment_form" value="" placeholder="例) TARO YAMADA">
+                                            <input type="text" name="card_name" class="validate[required] payment_form" value="" placeholder="例) TARO YAMADA">
                                         </dd>
                                     </dl>
                                   <dl class="payment-dl">
                                     <dt class="payment-dt">カード番号 <span class="">*</span></dt>
                                     <dd class="payment-dd">
-                                        <input type="text" name="card_num" class="payment_form" value="" placeholder="16桁のカード番号">
+                                        <input type="text" name="card_num" class="validate[required] payment_form" value="" placeholder="16桁のカード番号">
                                     </dd>
                                   </dl>
                                   <dl class="payment-dl">
                                     <dt class="payment-dt">有効期限 <span class="">*</span></dt>
                                     <dd class="payment-dd">
-                                        <input type="text" name="card_expiry-y" class="expiry" value="" placeholder="例) 10">
+                                        <input type="text" name="card_expiry-y" class="validate[required] expiry" value="" placeholder="例) 10">
                                         <span>/</span>
-                                        <input type="text" name="card_expiry-m" class="expiry" value="" placeholder="例) 23">
+                                        <input type="text" name="card_expiry-m" class="validate[required] expiry" value="" placeholder="例) 23">
                                     </dd>
                                   </dl>
                                   <dl class="payment-dl">
                                     <dt class="payment-dt">セキュリティコード <span class="">*</span></dt>
                                     <dd class="payment-dd">
-                                        <input type="text" name="card_cvc" class="payment_form" value="" placeholder="例) 123">
+                                        <input type="text" name="card_cvc" class="validate[required] payment_form" value="" placeholder="例) 123">
                                     </dd>
                                   </dl>
                                 </div>
@@ -741,7 +740,7 @@
                                 <div id="payment-message" class="hidden"></div>
                             </form>
                             <!--後払いペイディ決済フォーム-->
-                            <div id="paidy-form" class="paidy-pay">
+                            <form id="paidy-form" class="paidy-pay">
                                 <div class="paidy-pay_view">
                                     <img src="{{ asset('img/paidy_logo.png')}}" alt="後払いペイディ">
                                 </div>
@@ -752,19 +751,19 @@
                                     <dl class="paidy_form-dl">
                                         <dt class="paidy_form-dt">携帯番号 <span class="">*</span></dt>
                                         <dd class="paidy_form-dd">
-                                            <input type="tel" name="paidy-email" value="" class="paidy_form_item" id="paidy_tel">
+                                            <input type="tel" name="paidy-email" value="" class="validate[required] paidy_form_item" id="paidy_tel">
                                         </dd>
                                     </dl>
                                     <dl class="paidy_form-dl">
                                         <dt class="paidy_form-dt">メール <span class="">*</span></dt>
                                         <dd class="paidy_form-dd">
-                                            <input type="email" name="paidy-tel" value="" class="paidy_form_item" id="paidy_mail">
+                                            <input type="email" name="paidy-tel" value="" class="validate[required] paidy_form_item" id="paidy_mail">
                                         </dd>
                                     </dl>
                                     <a href="{{url('')}}" class="paidy_form_link">後払いペイディについて >></a>
                                 </div>
-                                <button id="paidy-checkout" class="paidy_submit" onclick="paidyPay()">確認画面へ</button>
-                            </div>
+                                <button id="paidy-checkout" class="paidy_submit" type="submit" onclick="paidyPay()">確認画面へ</button>
+                            </form>
                             <script type="text/javascript">
                             var config = {
                                     "api_key": "pk_test_64flakiliha8239usr0cpe7gvd",
@@ -785,37 +784,115 @@
                             };
                             var paidyHandler = Paidy.configure(config); 
                             function paidyPay() {
-                                    var payload = {
-                                        "amout":980,
-                                        "currency" : "JPY",
-                                        "store_name": "ぐっとWifi",
-                                        "buyer": {
-                                            "email": "successful.payment@paidy.com",
-                                            "name1": "山田　太郎",
-                                            "name2": "ヤマダ　タロウ",
-                                            "phone" : "08000000001"
-                                        },
-                                        "buyer data":{
-                                        "user_id": "yamada_taro",
-                                        "age": 29,
-                                        "days_since_first_transaction": 29,
-                                        "ltv": 10000,
-                                        "order_count": 1000,
-                                        "last_order_amount": 20000,
-                                        "last_order_at": 20,
-                                        },
-                                        "order": {
+                                var payload = {
+                                    "id":"pay_WD1KIj4AALQAIMtZ",
+                                    "created_at":"2018-06-14T05:27:10.063Z",
+                                    "expires_at":"2018-07-14T05:27:10.063Z",
+                                    "token_id": "tok_WL0GoQwAAAoA1beX",
+                                    "amout":980,
+                                    "currency" : "JPY",
+                                    "store_name": "ぐっとWifi",
+                                    "test":true,
+                                    "status":"closed",
+                                    "tier":"classic",
+                                    "buyer": {
+                                        "email": "successful.payment@paidy.com",
+                                        "name1": "山田　太郎",
+                                        "name2": "ヤマダ　タロウ",
+                                        "phone" : "08000000001"
+                                    },
+                                    "buyer data":{
+                                    "user_id": "yamada_taro",
+                                    "age": 29,
+                                    "days_since_first_transaction": 29,
+                                    "ltv": 10000,
+                                    "order_count": 1000,
+                                    "last_order_amount": 20000,
+                                    "last_order_at": 20,
+                                    },
+                                    "order": {
                                         "items": [{
-                                                "id":"PDI001",
-                                                "quantity":1,
+                                                "id":"X001",
                                                 "title":"Speed Wi-Fi 5G X11",
-                                                "unit_price":980,
+                                                "quantity":1,
+                                                "unit_price":5302,
+                                                "tax":98,
+                                                "shipping":0,
                                                 "description":" "
-                                            }],
-                                        },
-                                    
+                                                },{
+                                                "id":"L001",
+                                                "title":"Speed Wi-Fi HOME 5G L12",
+                                                "quantity":1,
+                                                "unit_price":5302,
+                                                "tax":98,
+                                                "shipping":0,
+                                                "description":""
+                                                },{
+                                                "id":"CPN001",
+                                                "unit_price":-4224,
+                                                "description":" "
+                                        }],
+                                        "captures":[{
+                                            "id":"cap_WFIk5yIAACIAC6n3",
+                                            "created_at":"2018-06-15T05:06:47.189Z",
+                                            "amount":1078,
+                                            "tax":482,
+                                            "shipping":0,
+                                            "order_ref":"X11_001",
+                                            "items":[
+                                            {
+                                                "id":"PDI001",
+                                                "title":"Paidyスニーカー",
+                                                "description":" ",
+                                                "unit_price":10000,
+                                                "quantity":1
+                                            },{
+                                                "id":"EXC002",
+                                                "title":"エクスコスニーカー",
+                                                "description":" ",
+                                                "unit_price":15000,
+                                                "quantity":2
+                                            },{
+                                                "id": "CPN001",
+                                                "title": "Discount",
+                                                "description":" ",
+                                                "unit_price":-1000,
+                                                "quantity":1
+                                            }
+                                            ],
+                                        }], 
+                                        "refunds":[],
+                                        "metadata":{}
+                                    },
                                 };
                                 paidyHandler.launch(payload);
+
+                                const url = 'https://api.paidy.com';
+                                const headers = new Headers();
+                                headers.append('Content-Type: application/json');
+                                headers.append('Paidy-Version: 2018-04-10');
+                                headers.append('Authorization: Bearer $secret_key');
+                                const postFetch = () => {
+                                let formData = new formData(payload);
+                                        for (let value of formData.entries()) {
+                                            console.log(value);
+                                        }
+                                        fetch(url, {
+                                            method: 'POST',
+                                            headers:headers,
+                                            body: formData
+                                        }).then((response) => {
+                                            if(!response.ok) {
+                                                console.log('error!');
+                                            } 
+                                            console.log('ok!');
+                                            return response.json();
+                                        }).then((data)  => {
+                                            console.log(data);
+                                        }).catch((error) => {
+                                            console.log(error);
+                                        });
+                                };
                             };
                         </script>
                     </div>
@@ -829,7 +906,6 @@
             </div>
         </div>
     </div>
-    <script src="{{ asset('https://code.jquery.com/jquery-1.11.3.min.js')}}"></script>
     <script src="{{ asset('js/jquery-ui.min.js')}}"></script>
     <script src="{{ asset('js/jquery.ui.datepicker-ja.min.js')}}"></script>
     <link rel="stylesheet" href="{{ asset('js/jquery-ui.css')}}">
@@ -852,20 +928,85 @@
      }
     </script>
     <script type="text/javascript">
-        jQuery(document).ready(function(){
+        jQuery(document).ready(function($){
             jQuery("#form1").validationEngine('attach', {
                 promptPosition:"topRight"
             });
         });
-        jQuery("#btn").click(function(){
-
+        jQuery("#submit").click(function(){
             if(!(jQuery("#form1").validationEngine('validate'))){
                 return false;
 
             }else{
-                var btn = document.getElementById('btn');
+                doSubmit();
             }
         });
+    </script>
+    <script>
+        /*stripe.js*/
+        function dosubmit(){
+            var stripe = stripe('pk_test_51L7afBAkBFuJeEP5ll7bebbFS8etadBjgz1tWH8VEl1e6LhsUmvOScIPuYf9fI73hE3equWFMZOvwNfc4LdoJx7L00jhnYhL69');
+            var elements = stripe.elements();
+
+            var elementStyles = {
+                base: {
+                    fontSize: '14px',
+                },
+                invalid: {
+                    color: '#eb1c26',
+                }
+            }
+            
+            var elementClasses = {
+                focus: 'is-focused',
+                empty: 'is-empty',
+                invalid: 'is-invalid'
+            }
+            
+            var cardNumber = elements.create('cardNumber', {
+                style: elementStyles,
+                classes: elementClasses,
+            });
+
+            var cardNumber = elements.create('cardNumber');
+            cardNumber.mount('#card_number');
+
+            cardNumber.addEventListener('change', function(event) {
+                var displayError = document.getElementById('card_errors');
+                if (event.error) {
+                    displayError.textContent = event.error.message;
+                } else {
+                    displayError.textContent = '';
+                }
+            });
+            form.addEventListener('submit', function(event) {
+                event.preventDefault();
+                var errorElement = document.getElementById('card_errors');
+                if (event.error) {
+                    errorElement.textContent = event.error.message;
+                } else {
+                    errorElement.textContent = '';
+                }
+            
+                stripe.createToken(cardNumber).then(function(result) {
+                    if (result.error) {
+                        errorElement.textContent = result.error.message;
+                    } else {
+                        stripeSubmit(result.token);
+                    }
+                });
+            });
+            
+            function stripeSubmit(token) {
+                var form = document.getElementById('form1');
+                    var hiddenInput = document.createElement('input');
+                    hiddenInput.setAttribute('type', 'hidden');
+                    hiddenInput.setAttribute('name', 'stripeToken');
+                    hiddenInput.setAttribute('value', token.id);
+                    form.appendChild(hiddenInput);
+                    form.submit();
+            }
+        }
     </script>
     <script>
         //フリガナ自動入力
