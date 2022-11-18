@@ -751,13 +751,13 @@
                                     <dl class="paidy_form-dl">
                                         <dt class="paidy_form-dt">携帯番号 <span class="">*</span></dt>
                                         <dd class="paidy_form-dd">
-                                            <input type="tel" name="paidy-email" value="" class="validate[required] paidy_form_item" id="paidy_tel">
+                                            <input type="tel" name="paidy-tel" value="" class="validate[required] paidy_form_item" id="paidy_tel">
                                         </dd>
                                     </dl>
                                     <dl class="paidy_form-dl">
                                         <dt class="paidy_form-dt">メール <span class="">*</span></dt>
                                         <dd class="paidy_form-dd">
-                                            <input type="email" name="paidy-tel" value="" class="validate[required] paidy_form_item" id="paidy_mail">
+                                            <input type="email" name="paidy-email" value="" class="validate[required] paidy_form_item" id="paidy_mail">
                                         </dd>
                                     </dl>
                                     <a href="{{url('')}}" class="paidy_form_link">後払いペイディについて >></a>
@@ -782,6 +782,7 @@
                                         "type": "recurring",
                                     }
                             };
+                            /*paidy-post*/
                             var paidyHandler = Paidy.configure(config); 
                             function paidyPay() {
                                 var payload = {
@@ -804,6 +805,7 @@
                                     "buyer data":{
                                     "user_id": "yamada_taro",
                                     "age": 29,
+                                    "age_platform": 50,
                                     "days_since_first_transaction": 29,
                                     "ltv": 10000,
                                     "order_count": 1000,
@@ -811,89 +813,42 @@
                                     "last_order_at": 20,
                                     },
                                     "order": {
-                                        "items": [{
-                                                "id":"X001",
-                                                "title":"Speed Wi-Fi 5G X11",
-                                                "quantity":1,
-                                                "unit_price":5302,
-                                                "tax":98,
-                                                "shipping":0,
-                                                "description":" "
-                                                },{
-                                                "id":"L001",
-                                                "title":"Speed Wi-Fi HOME 5G L12",
-                                                "quantity":1,
-                                                "unit_price":5302,
-                                                "tax":98,
-                                                "shipping":0,
-                                                "description":""
-                                                },{
-                                                "id":"CPN001",
-                                                "unit_price":-4224,
-                                                "description":" "
-                                        }],
-                                        "captures":[{
-                                            "id":"cap_WFIk5yIAACIAC6n3",
-                                            "created_at":"2018-06-15T05:06:47.189Z",
-                                            "amount":1078,
-                                            "tax":482,
-                                            "shipping":0,
-                                            "order_ref":"X11_001",
-                                            "items":[
-                                            {
-                                                "id":"PDI001",
-                                                "title":"Paidyスニーカー",
-                                                "description":" ",
-                                                "unit_price":10000,
-                                                "quantity":1
-                                            },{
-                                                "id":"EXC002",
-                                                "title":"エクスコスニーカー",
-                                                "description":" ",
-                                                "unit_price":15000,
-                                                "quantity":2
-                                            },{
-                                                "id": "CPN001",
-                                                "title": "Discount",
-                                                "description":" ",
-                                                "unit_price":-1000,
-                                                "quantity":1
-                                            }
-                                            ],
-                                        }], 
-                                        "refunds":[],
-                                        "metadata":{}
+                                        "items": [
+                                          {
+                                               "id":"PDI001",
+                                               "quantity":1,
+                                               "title":"スニーカー",
+                                               "unit_price":10000,
+                                               "description":" "
+                                          }
+                                     ],
+                                     "order_ref": "88e021674",
+                                     "shipping": 0,
+                                     "tax": 0
                                     },
+                                    "metadata":{}
                                 };
                                 paidyHandler.launch(payload);
-
-                                const url = 'https://api.paidy.com';
-                                const headers = new Headers();
-                                headers.append('Content-Type: application/json');
-                                headers.append('Paidy-Version: 2018-04-10');
-                                headers.append('Authorization: Bearer $secret_key');
-                                const postFetch = () => {
-                                let formData = new formData(payload);
-                                        for (let value of formData.entries()) {
-                                            console.log(value);
-                                        }
-                                        fetch(url, {
-                                            method: 'POST',
-                                            headers:headers,
-                                            body: formData
-                                        }).then((response) => {
-                                            if(!response.ok) {
-                                                console.log('error!');
-                                            } 
-                                            console.log('ok!');
-                                            return response.json();
-                                        }).then((data)  => {
-                                            console.log(data);
-                                        }).catch((error) => {
-                                            console.log(error);
-                                        });
-                                };
                             };
+                        </script>
+                        <script type="text/javascript">
+                             const url = 'https://api.paidy.com/payments/pay_WD1KIj4AALQAIMtZ/captures';
+                             const data = {};
+                                fetch(url, {
+                                    method: 'POST',
+                                    headers:{
+                                        'Content-Type': 'application/json; charset=utf-8',
+                                        'Paidy-Version': '2018-04-10',
+                                        'Authorization': 'Bearer $secret_key'
+                                    },
+                                    body: JSON.stringify(data)
+                                    .then((response)=>{
+                                        return( response.json() ); //ここでBodyからJSONを返す
+                                    })
+                                    .then((data)=>{
+                                        console.log(data);
+                                    })
+                                });
                         </script>
                     </div>
                 </form>
