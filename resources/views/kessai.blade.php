@@ -16,7 +16,6 @@
     <script src="{{ asset('js/jquery.validationEngine.js')}}"></script>
     <script src="{{ asset('js/jquery.validationEngine-ja.js')}}"></script>
     <script src="{{ asset('js/jquery.autoKana.js')}}"></script>
-    <script src="{{ asset('https://js.stripe.com/v3/')}}"></script>
     <script type="text/javascript" src="{{('https://apps.paidy.com/')}}"></script>
     <link rel="shortcut icon" href="{{ asset('img/favicon.ico')}}" />
     <link rel="apple-touch-icon" href="{{ asset('img/logo144.png')}}" sizes="144x144">
@@ -764,96 +763,189 @@
                                 </div>
                                 <button id="paidy-checkout" class="paidy_submit" type="submit" onclick="paidyPay()">確認画面へ</button>
                             </form>
+                            <script type="text/javascript" src="https://apps.paidy.com/"></script>
                             <script type="text/javascript">
-                            var config = {
-                                    "api_key": "pk_test_64flakiliha8239usr0cpe7gvd",
-                                    "logo_url": "http://www.paidy.com/images/logo.png",
-                                    "closed": function(callbackData) {
-                                        /*
-                                        Data returned in the callback:
-                                        callbackData.id,
-                                        callbackData.created_at,
-                                        callbackData.status 
-                                        */     
-                                    },
-                                    
-                                    "token": {
-                                        "wallet_id": "default",
-                                        "type": "recurring",
+                                 
+                                var config = {
+                                        "api_key": "pk_test_64flakiliha8239usr0cpe7gvd",
+                                        "logo_url": "http://www.paidy.com/images/logo.png",
+                                        "closed": function (callbackData) {
+                                            /*
+                                            Data returned in the callback:
+                                            callbackData.id,
+                                            callbackData.created_at,
+                                            callbackData.status 
+                                            */
+                                        }
+                                        
+                                    };
+                                /*paidy-post*/
+                                var paidyHandler = Paidy.configure(config); 
+                                function paidyPay(){
+                                    var payload = {
+                                        "id":"pay_WD1KIj4AALQAIMtZ",
+                                        "amount":1078,
+                                        "currency":"JPY",
+                                        "description":" ",
+                                        "store_name":"goodWifi",
+                                        "test":true,
+                                        "status":"closed",
+                                        "tier":"classic",
+                                        "buyer":{
+                                            "name1":"山田　太郎",
+                                            "name2":"ヤマダ　タロウ",
+                                            "email":"successful.payment@paidy.com",
+                                            "phone":"08000000001"
+                                        },
+                                        "buyer_data": {
+                                            "user_id": "yamada_taro",
+                                            "age": 29,
+                                            "age_platform": 50,
+                                            "days_since_first_transaction": 29,
+                                            "ltv": 250000,
+                                            "order_count": 1000,
+                                            "last_order_amount": 20000,
+                                            "last_order_at": 20,
+                                            "order_amount_last3months": 15000,
+                                            "order_count__last3months": 5,
+                                            "additional_shipping_addresses": [{
+                                                    "line1": "AZABUビル 2F",
+                                                    "line2": "東麻布2-10-1",
+                                                    "city": "港区",
+                                                    "state": "東京都",
+                                                    "zip": "106-0023"
+                                            }],
+                                            "billing_address": {
+                                                    "line1": "AXISビル 10F",
+                                                    "line2": "六本木4-22-1",
+                                                    "city": "港区",
+                                                    "state": "東京都",
+                                                    "zip": "106-2004"
+                                            },
+                                        },
+                                        "order":{
+                                            "items":[
+                                            {
+                                            "id":"X11001",
+                                            "title":"Speed Wi-Fi 5G X11",
+                                            "description":" ",
+                                            "unit_price":5302,
+                                            "quantity":1
+                                            },{
+                                            "id":"L12001",
+                                            "title":"Speed Wi-Fi HOME 5G L12",
+                                            "description":" ",
+                                            "unit_price":5302,
+                                            "quantity":1
+                                            },{
+                                            "id": "CPN001",
+                                            "title": "Discount",
+                                            "description":" ",
+                                            "unit_price":-4224,
+                                            "quantity":1
+                                            }
+                                            ],
+                                            "tax":482,
+                                            "shipping":0,
+                                            "order_ref":"NO0000000001",
+                                            "updated_at":" "
+                                        },
+                                        "shipping_address":{
+                                            "line1":"AXISビル10F",
+                                            "line2":"六本木4-22-1",
+                                            "city":"港区",
+                                            "state":"東京都",
+                                            "zip":"106-2004"
+                                        },
+                                        "captures":[
+                                            {
+                                            "id":"cap_WFIk5yIAACIAC6n3",
+                                            "created_at":"2018-06-15T05:06:47.189Z",
+                                            "amount":980,
+                                            "tax":98,
+                                            "shipping":0,
+                                            "items":[
+                                            {
+                                                "id":"X11001",
+                                                "title":"Speed Wi-Fi 5G X11",
+                                                "description":" ",
+                                                "unit_price":5302,
+                                                "quantity":1
+                                            },{
+                                                "id":"L12001",
+                                                "title":"Speed Wi-Fi HOME 5G L12",
+                                                "description":" ",
+                                                "unit_price":5302,
+                                                "quantity":1
+                                            },{
+                                                "id": "CPN001",
+                                                "title": "Discount",
+                                                "description":" ",
+                                                "unit_price":-4224,
+                                                "quantity":1
+                                            }
+                                            ],
+                                            }
+                                        ], 
+                                        "refunds":[],
+                                        "metadata":{}
+
+                                    };
+
+                                    paidyHandler.launch(payload);
+
+                                    function testA(test){
+                                        test();// funcBの処理
+                                        console.log('testA');// funcBの処理
                                     }
-                            };
-                            /*paidy-post*/
-                            var paidyHandler = Paidy.configure(config); 
-                            function paidyPay() {
-                                var payload = {
-                                    "id":"pay_WD1KIj4AALQAIMtZ",
-                                    "created_at":"2018-06-14T05:27:10.063Z",
-                                    "expires_at":"2018-07-14T05:27:10.063Z",
-                                    "token_id": "tok_WL0GoQwAAAoA1beX",
-                                    "amout":980,
-                                    "currency" : "JPY",
-                                    "store_name": "ぐっとWifi",
-                                    "test":true,
-                                    "status":"closed",
-                                    "tier":"classic",
-                                    "buyer": {
-                                        "email": "successful.payment@paidy.com",
-                                        "name1": "山田　太郎",
-                                        "name2": "ヤマダ　タロウ",
-                                        "phone" : "08000000001"
-                                    },
-                                    "buyer data":{
-                                    "user_id": "yamada_taro",
-                                    "age": 29,
-                                    "age_platform": 50,
-                                    "days_since_first_transaction": 29,
-                                    "ltv": 10000,
-                                    "order_count": 1000,
-                                    "last_order_amount": 20000,
-                                    "last_order_at": 20,
-                                    },
-                                    "order": {
-                                        "items": [
-                                          {
-                                               "id":"PDI001",
-                                               "quantity":1,
-                                               "title":"スニーカー",
-                                               "unit_price":10000,
-                                               "description":" "
-                                          }
-                                     ],
-                                     "order_ref": "88e021674",
-                                     "shipping": 0,
-                                     "tax": 0
-                                    },
-                                    "metadata":{}
+
+                                    function testB(){
+                                        console.log('testB')
+                                    }
+
+                                    testA(testB);
+
+
+                                    var url = 'https://api.paidy.com/payments/pay_WD1KIj4AALQAIMtZ';
+                                    var data = '';
+                                    
+                                    function getdeta(){
+                                        fetch(url,{
+                                            headers:{
+                                                'Content-Type': 'application/json',
+                                                'Paidy-Version': '2018-04-10',
+                                                'Authorization': 'Bearer $secret_key'
+                                            },
+                                            body:JSON.stringify(data)
+                                        })
+                                        return response.json();
+                                    }
                                 };
-                                paidyHandler.launch(payload);
-                            };
-                        </script>
-                        <script type="text/javascript">
-                             const url = 'https://api.paidy.com/payments/pay_WD1KIj4AALQAIMtZ/captures';
-                             const data = {};
-                                fetch(url, {
-                                    method: 'POST',
-                                    headers:{
-                                        'Content-Type': 'application/json; charset=utf-8',
-                                        'Paidy-Version': '2018-04-10',
-                                        'Authorization': 'Bearer $secret_key'
-                                    },
-                                    body: JSON.stringify(data)
-                                    .then((response)=>{
-                                        return( response.json() ); //ここでBodyからJSONを返す
-                                    })
-                                    .then((data)=>{
-                                        console.log(data);
-                                    })
-                                });
+                                
+                                /*function 関数A(コールバック関数){
+                                    コールバック関数();//コールバック関数の処理
+                                    処理　//関数Aの処理
+                                }
+
+
+
+                                //config = {//コールバック関数
+                                    //"closed": function (callbackData) {
+                                            /*
+                                            Data returned in the callback:
+                                            callbackData.id,
+                                            callbackData.created_at,
+                                            callbackData.status 
+                                            */
                         </script>
                     </div>
                 </form>
                 </div>
             </div>
+        </div>
+        <div>
+            <label for="upload">写真を撮影してアップロードする</label>
+            <input id="upload" type="file" name="image" accept="image/*" capture="camera">
         </div>
         <div id="footer"> 
             <div class="footer-inner">
@@ -997,7 +1089,6 @@
         });
     </script>
     <script type="text/javascript">
-
         window.onload = function () {
             payselect();
             chg_plan();
