@@ -1,16 +1,16 @@
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "https://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
-<html xmlns="https://www.w3.org/1999/xhtml">
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
 <head>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
     <meta http-equiv="Content-Style-Type" content="text/css" />
     <meta http-equiv="Content-Script-Type" content="text/javascript" />
     <meta name="viewport" content="width=device-width,user-scalable=no,maximum-scale=1" />
     <title>ぐっとWifi</title>
-    <link rel="stylesheet" href="{{ asset('css/reset.css') }}">
-    <link rel="stylesheet" href="{{ asset('css/validationEngine.jquery.css') }}">
-    <link rel="stylesheet" href="{{ asset('css/contents.css') }}">
-    <link rel="stylesheet" href="{{ asset('css/tablet.css') }}">
-    <link rel="stylesheet" href="{{ asset('css/smart.css') }}">
+    <link rel="stylesheet" href="{{ asset('assets/css/reset.css') }}">
+    <link rel="stylesheet" href="{{ asset('assets/css/validationEngine.jquery.css') }}">
+    <link rel="stylesheet" href="{{ asset('assets/css/contents.css') }}">
+    <link rel="stylesheet" href="{{ asset('assets/css/tablet.css') }}">
+    <link rel="stylesheet" href="{{ asset('assets/css/smart.css') }}">
     <script src="{{ url('https://code.jquery.com/jquery-1.11.3.min.js')}}"></script>
     <script src="{{ asset('https://ajaxzip3.github.io/ajaxzip3.js')}}" charset="UTF-8"></script>
     <script src="{{ asset('js/jquery.validationEngine.js')}}"></script>
