@@ -12,29 +12,29 @@
     <link rel="stylesheet" href="{{ secure_asset('/assets/css/tablet.css') }}">
     <link rel="stylesheet" href="{{ secure_asset('/assets/css/smart.css') }}">
     <script src="{{ url('https://code.jquery.com/jquery-1.11.3.min.js')}}"></script>
-    <script src="{{ asset('https://ajaxzip3.github.io/ajaxzip3.js')}}" charset="UTF-8"></script>
-    <script src="{{ asset('js/jquery.validationEngine.js')}}"></script>
-    <script src="{{ asset('js/jquery.validationEngine-ja.js')}}"></script>
-    <script src="{{ asset('js/jquery.autoKana.js')}}"></script>
+    <script src="{{ url('https://ajaxzip3.github.io/ajaxzip3.js')}}" charset="UTF-8"></script>
+    <script src="{{ secure_asset('/assets/js/jquery.validationEngine.js')}}"></script>
+    <script src="{{ secure_asset('/assets/js/jquery.validationEngine-ja.js')}}"></script>
+    <script src="{{ secure_asset('/assets/js/jquery.autoKana.js')}}"></script>
     <script type="text/javascript" src="{{('https://apps.paidy.com/')}}"></script>
-    <link rel="shortcut icon" href="{{ asset('img/favicon.ico')}}" />
-    <link rel="apple-touch-icon" href="{{ asset('img/logo144.png')}}" sizes="144x144">
-    <link rel="icon" href="{{ asset('img/logo96.png')}}" sizes="96x96">
+    <link rel="shortcut icon" href="{{ secure_asset('/assets/img/favicon.ico')}}" />
+    <link rel="apple-touch-icon" href="{{ secure_asset('/assets/img/logo144.png')}}" sizes="144x144">
+    <link rel="icon" href="{{ secure_asset('/assets/img/logo96.png')}}" sizes="96x96">
 </head>
 <body>
     <div id="page_body">
         <div id="header">
             <div class="header_txt center">
-            <img src="{{ asset('img/form_title.jpg')}}">
+            <img src="{{ secure_asset('/assets/img/form_title.jpg')}}">
             </div> 
         </div>
         <div id="contents">
             <div id="contents_in">
                 <div id="n_area_00" class="navi_area center">
-                    <img src="{{ asset('img/form_flow01_pc.png') }}" style="max-width: 700px;width: 100%;">
+                    <img src="{{ secure_asset('/assets/img/form_flow01_pc.png') }}" style="max-width: 700px;width: 100%;">
                 </div>
                 <div id="n_area_10" class="navi_area center">
-                    <img src="{{ asset('img/form_flow01_sp.png')}}" style="width: 100%;">
+                    <img src="{{ secure_asset('/assets/img/form_flow01_sp.png')}}" style="width: 100%;">
                 </div>
                 <div class="form_box">
                     <form id="form1" name="form1">
@@ -47,8 +47,8 @@
                                 <input type="radio" name="plan" value="クラウド300GB" onclick="chg_plan();" > クラウド300GBプラン
                             </label>
                             <div id="wimax_img" style="padding-top: 15px;padding-bottom: 15px;">
-                                <img id="wi_img_normal" src="{{ asset('img/wimax_img.jpg')}}" style="border: 1px solid #d9d4d4;padding: 2px;max-width: 99.5%;">
-                                <img id="wi_img_sp" src="{{ asset('img/wimax_img_sp.jpg')}}" style="border: 1px solid #d9d4d4;padding: 2px;max-width: 99%;">
+                                <img id="wi_img_normal" src="{{ secure_asset('/assets/img/wimax_img.jpg')}}" style="border: 1px solid #d9d4d4;padding: 2px;max-width: 99.5%;">
+                                <img id="wi_img_sp" src="{{ secure_asset('/assets/img/wimax_img_sp.jpg')}}" style="border: 1px solid #d9d4d4;padding: 2px;max-width: 99%;">
                             </div>
                         </div>
                         <div id="plan_super_area">
@@ -57,10 +57,10 @@
                                     <div class="left plan_navi_in">
                                         <div class="plan_navi_in_title">お申し込み内容</div>
                                             <div style="padding-top: 10px;padding-left: 10px;float: left;width: 100px;">
-                                                <img id="n_t_0_img" src="{{ asset('img/device02.png')}}" style="max-height: 100px;border: 1px solid #c4bdbd;padding: 2px;">
-                                                <img id="n_t_1_img" src="{{ asset('img/device01.png')}}" style="max-height: 100px;border: 1px solid #c4bdbd;padding: 2px;">
-                                                <img id="n_t_2_img" src="{{ asset('img/device03.png')}}" style="max-height: 100px;border: 1px solid #c4bdbd;padding: 2px;">
-                                                <img id="n_t_3_img" src="{{ asset('img/na01.png')}}" style="max-height: 100px;border: 1px solid #c4bdbd;padding: 2px;">
+                                                <img id="n_t_0_img" src="{{ secure_asset('/assets/img/device02.png')}}" style="max-height: 100px;border: 1px solid #c4bdbd;padding: 2px;">
+                                                <img id="n_t_1_img" src="{{ secure_asset('/assets/img/device01.png')}}" style="max-height: 100px;border: 1px solid #c4bdbd;padding: 2px;">
+                                                <img id="n_t_2_img" src="{{ secure_asset('/assets/img/device03.png')}}" style="max-height: 100px;border: 1px solid #c4bdbd;padding: 2px;">
+                                                <img id="n_t_3_img" src="{{ secure_asset('/assets/img/na01.png')}}" style="max-height: 100px;border: 1px solid #c4bdbd;padding: 2px;">
                                             </div>
                                             <div style="padding-top: 10px;padding-left: 10px;float: left;">
                                                 <span id="n_plan_txt" style="font-size: 15px;"></span><br>
@@ -73,11 +73,11 @@
                                                 <div style="background-color: #f9cb09;padding-top: 2px;padding-bottom: 2px;text-align: center;width: 95%;margin-bottom: 5px;font-size: 80%;">ご選択中のオプション</div>
 
                                                 <div id="n_s_0_img">
-                                                    <img src="{{ asset('img/support.jpg')}}" style="max-height: 40px;border: 1px solid #c4bdbd;padding: 2px;">
+                                                    <img src="{{ secure_asset('/assets/img/support.jpg')}}" style="max-height: 40px;border: 1px solid #c4bdbd;padding: 2px;">
                                                     <span style="position: relative;bottom: 15px;">安心サポートプラス</span>
                                                 </div>
                                                 <div id="n_s_1_img">
-                                                    <img src="{{ asset('img/goodsupport.jpg')}}" style="max-height: 40px;border: 1px solid #c4bdbd;padding: 2px;">
+                                                    <img src="{{ secure_asset('/assets/img/goodsupport.jpg')}}" style="max-height: 40px;border: 1px solid #c4bdbd;padding: 2px;">
                                                     <span style="position: relative;bottom: 15px;">ぐっとサポート</span>
                                                 </div>
                                                 <div id="n_s_2_img">
@@ -154,7 +154,7 @@
                                 <div class="clear_left"></div>
                                 <div class="form-table new_plan_select left">
                                 <div class="new_plan_select_in">
-                                    <img src="{{ asset('img/saitann.png')}}" style="max-width: 700px;width: 100%;" id="saitan_img">
+                                    <img src="{{ secure_asset('/assets/img/saitann.png')}}" style="max-width: 700px;width: 100%;" id="saitan_img">
                                     <h2>お申込み台数</h2>
                                     <div class="select-menu cp_ipselect cp_sl02" onchange="navi_ctr(0);">
                                         <select id="num" name="num">
@@ -184,11 +184,11 @@
                                                         Speed Wi-Fi 5G <div id="5g_x11_txt_br"></div>X11 <div id="5g_x11_txt_br2"></div>
                                                     </div>
                                                     <div style="border-top: 2px solid #ddd;padding-top: 15px;">
-                                                        <img src="{{ asset('img/device_02.png')}}" style="max-height: 140px;">
+                                                        <img src="{{ secure_asset('/assets/img/device_02.png')}}" style="max-height: 140px;">
                                                     </div>
                                                     <div class="right">
                                                         <div class="left terminal_detail">
-                                                            <img src="{{ asset('img/tokutixyou01.png')}}" style="max-height: 140px;">
+                                                            <img src="{{ secure_asset('/assets/img/tokutixyou01.png')}}" style="max-height: 140px;">
                                                         </div>
                                                     </div>
                                                 </div>
@@ -202,11 +202,11 @@
                                                         Speed Wi-Fi HOME 5G <div id="5g_l12_txt_br"></div>L12 <div id="5g_l12_txt_br2"></div>
                                                     </div>
                                                     <div style="border-top: 2px solid #ddd;padding-top: 15px;">
-                                                        <img src="{{ asset('img/device_01.png')}}" style="max-height: 140px;">
+                                                        <img src="{{ secure_asset('/assets/img/device_01.png')}}" style="max-height: 140px;">
                                                     </div>
                                                     <div class="right">
                                                         <div class="left terminal_detail">
-                                                            <img src="{{ asset('img/tokutixyou02.png')}}" style="max-height: 140px;">
+                                                            <img src="{{ secure_asset('/assets/img/tokutixyou02.png')}}" style="max-height: 140px;">
                                                         </div>
                                                     </div>
                                                 </div>
@@ -224,7 +224,7 @@
                                                         </div>
 
                                                         <div style="border-top: 2px solid #ddd;">
-                                                            <img src="{{ asset('img/device02.png')}}" style="max-height: 180px;">
+                                                            <img src="{{ secure_asset('/assets/img/device02.png')}}" style="max-height: 180px;">
                                                         </div>
 
                                                     </div>
@@ -238,7 +238,7 @@
                                                             スノーホワイト
                                                         </div>
                                                         <div  style="border-top: 2px solid #ddd;">
-                                                            <img src="{{ asset('img/device01.png')}}" style="max-height: 180px;">
+                                                            <img src="{{ secure_asset('/assets/img/device01.png')}}" style="max-height: 180px;">
                                                         </div>
 
                                                     </div>
@@ -260,7 +260,7 @@
                                                         NA01
                                                     </div>
                                                     <div style="border-top: 2px solid #ddd;padding-top: 15px;">
-                                                        <img src="{{ asset('img/na01.png')}}" style="max-height: 170px;">
+                                                        <img src="{{ secure_asset('/assets/img/na01.png')}}" style="max-height: 170px;">
                                                     </div>
                                                     <div class="right">
                                                         <div class="left" style="background-color: #f1ecec;padding: 15px;">
@@ -297,7 +297,7 @@
                                             <div class="selectBox selectBox-plan selectBox-option" id="support_0_mess">
                                                 <div style="display: flex;justify-content: center;padding-bottom: 15px;">
                                                     <div class="option_img">
-                                                        <img src="{{ asset('img/support.jpg')}}">
+                                                        <img src="{{ secure_asset('/assets/img/support.jpg')}}">
                                                     </div>
                                                     <div class="planName planName_option">
                                                         安心サポートプラスに<br>
@@ -336,7 +336,7 @@
                                             <div class="selectBox selectBox-plan selectBox-option" id="protect_0_mess">
                                                 <div style="display: flex;justify-content: center;padding-bottom: 15px;">
                                                     <div class="option_img">
-                                                        <img src="{{ asset('img/goodsupport.jpg')}}">
+                                                        <img src="{{ secure_asset('/assets/img/goodsupport.jpg')}}">
                                                     </div>
                                                     <div class="planName planName_option">
                                                         ぐっとサポートに<br>
@@ -402,8 +402,8 @@
                                     <span class="btn3" onclick="pop_ctr_support_info_remove();">とじる</span>
                                 </div>
                                 <div class="close-btn" id="js-close-btn"><i class="fas fa-times"></i></div>
-                                        <img src="{{ asset('img/pop_01.png')}}" style="width: 75%;margin: 0 auto;" id="pop_01_0">
-                                    <img src="{{ asset('img/pop_01_sp.png')}}" style="width: 75%;margin: 0 auto;" id="pop_01_1">
+                                        <img src="{{ secure_asset('/assets/img/pop_01.png')}}" style="width: 75%;margin: 0 auto;" id="pop_01_0">
+                                    <img src="{{ secure_asset('/assets/img/pop_01_sp.png')}}" style="width: 75%;margin: 0 auto;" id="pop_01_1">
 
                                     <div class="btn_box center" style="margin-bottom: 20px;">
                                         <div class="unset_btn" onclick="pop_ctr_support_info_remove();">閉じる</div>
@@ -417,8 +417,8 @@
                                 <div class="right" style="margin-bottom: 20px;">
                                     <span class="btn3" onclick="pop_ctr_protect_info_remove();">閉じる</span>
                                 </div>
-                                <img src="{{ asset('img/pop_02.png')}}" style="width: 75%;margin: 0 auto;" id="pop_02_0">
-                                <img src="{{ asset('img/pop_02_sp.png')}}" style="width: 75%;margin: 0 auto;" id="pop_02_1">
+                                <img src="{{ secure_asset('/assets/img/pop_02.png')}}" style="width: 75%;margin: 0 auto;" id="pop_02_0">
+                                <img src="{{ secure_asset('/assets/img/pop_02_sp.png')}}" style="width: 75%;margin: 0 auto;" id="pop_02_1">
 
                                 <div class="btn_box center" style="margin-bottom: 20px;">
                                     <div class="unset_btn" onclick="pop_ctr_protect_info_remove();">閉じる</div>
@@ -432,11 +432,11 @@
                                     <span class="btn3" onclick="pop_ctr_support_del_info_remove();">とじる</span>
                                 </div>
                                 <div class="close-btn" id="js-close-btn"><i class="fas fa-times"></i></div>
-                                <img src="{{ asset('img/anshin_pop_pc.jpg')}}" style="width: 75%;margin: 0 auto;" id="pop_03_0">
-                                <img src="{{ asset('img/anshin_pop_sp.jpg')}}" style="width: auto;margin: 0 auto;" id="pop_03_1">
+                                <img src="{{ secure_asset('/assets/img/anshin_pop_pc.jpg')}}" style="width: 75%;margin: 0 auto;" id="pop_03_0">
+                                <img src="{{ secure_asset('/assets/img/anshin_pop_sp.jpg')}}" style="width: auto;margin: 0 auto;" id="pop_03_1">
                                 <div style="padding-top: 30px;">
-                                    <img src="{{ asset('img/pop_btn.png')}}" style="width: 75%;max-width:200px;margin: 0 auto;cursor: pointer;" id="pop_btn_0"  onclick="pop_btn_chg(0);">
-                                    <img src="{{ asset('img/pop_btn_done.png')}}" style="width: 75%;max-width:200px;margin: 0 auto;cursor: pointer;display: none;" id="pop_btn_1" onclick="pop_btn_chg(1);">
+                                    <img src="{{ secure_asset('/assets/img/pop_btn.png')}}" style="width: 75%;max-width:200px;margin: 0 auto;cursor: pointer;" id="pop_btn_0"  onclick="pop_btn_chg(0);">
+                                    <img src="{{ secure_asset('/assets/img/pop_btn_done.png')}}" style="width: 75%;max-width:200px;margin: 0 auto;cursor: pointer;display: none;" id="pop_btn_1" onclick="pop_btn_chg(1);">
                                 </div>
                             </div>
                             <div class="black-background" id="js-black-bg"></div>
@@ -447,11 +447,11 @@
                                     <span class="btn3" onclick="pop_ctr_protect_del_info_remove();">とじる</span>
                                 </div>
                                 <div class="close-btn" id="js-close-btn"><i class="fas fa-times"></i></div>
-                                <img src="{{ asset('img/gutto_pop_pc.jpg')}}" style="width: 75%;margin: 0 auto;" id="pop_04_0">
-                                <img src="{{ asset('img/gutto_pop_sp.jpg')}}" style="width: auto;margin: 0 auto;" id="pop_04_1">
+                                <img src="{{ secure_asset('/assets/img/gutto_pop_pc.jpg')}}" style="width: 75%;margin: 0 auto;" id="pop_04_0">
+                                <img src="{{ secure_asset('/assets/img/gutto_pop_sp.jpg')}}" style="width: auto;margin: 0 auto;" id="pop_04_1">
                                 <div style="padding-top: 30px;">
-                                    <img src="{{ asset('img/pop_btn.png')}}" style="width: 75%;max-width:200px;margin: 0 auto;cursor: pointer;" id="pop_btn_2"  onclick="pop_btn_chg2(0);">
-                                    <img src="{{ asset('img/pop_btn_done.png')}}" style="width: 75%;max-width:200px;margin: 0 auto;cursor: pointer;display: none;" id="pop_btn_3" onclick="pop_btn_chg2(1);">
+                                    <img src="{{ secure_asset('/assets/img/pop_btn.png')}}" style="width: 75%;max-width:200px;margin: 0 auto;cursor: pointer;" id="pop_btn_2"  onclick="pop_btn_chg2(0);">
+                                    <img src="{{ secure_asset('/assets/img/pop_btn_done.png')}}" style="width: 75%;max-width:200px;margin: 0 auto;cursor: pointer;display: none;" id="pop_btn_3" onclick="pop_btn_chg2(1);">
                                 </div>
                             </div>
                             <div class="black-background" id="js-black-bg"></div>
@@ -703,7 +703,7 @@
                             </div>
                             <!--クレジットカード決済フォーム(stripe)-->
                             <form id="payment-form">
-                                <img src="{{ asset('img/cc_payments.jpg')}}">
+                                <img src="{{ secure_asset('/assets/img/cc_payments.jpg')}}">
                                 <div id="payment-element" class="payment">
                                     <dl class="payment-dl">
                                         <dt class="payment-dt">カード名義人 <span class="">*</span></dt>
@@ -741,7 +741,7 @@
                             <!--後払いペイディ決済フォーム-->
                             <form id="paidy-form" class="paidy-pay">
                                 <div class="paidy-pay_view">
-                                    <img src="{{ asset('img/paidy_logo.png')}}" alt="後払いペイディ">
+                                    <img src="{{ secure_asset('/assets/img/paidy_logo.png')}}" alt="後払いペイディ">
                                 </div>
                                 <div class="paidy_form">
                                     <p>※上記でご入力いただきました、お客様情報より自動で転記しております。
