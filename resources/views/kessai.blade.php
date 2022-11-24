@@ -702,42 +702,36 @@
                                 <label for="paidy" class="radio-label"><input type="radio" name="pay" class="radio-item" id="paidy" onclick="payselect()">あと払いペイディ</label>
                             </div>
                             <!--クレジットカード決済フォーム(stripe)-->
-                            <form id="payment-form">
+                            <form id="form_payment" action="{{route('store')}}" method="post">
                                 <img src="{{ asset('/assets/img/cc_payments.jpg')}}">
-                                <div id="payment-element" class="payment">
-                                    <dl class="payment-dl">
-                                        <dt class="payment-dt">カード名義人 <span class="">*</span></dt>
-                                        <dd class="payment-dd">
-                                            <input type="text" name="card_name" class="validate[required] payment_form" value="" placeholder="例) TARO YAMADA">
-                                        </dd>
-                                    </dl>
-                                  <dl class="payment-dl">
-                                    <dt class="payment-dt">カード番号 <span class="">*</span></dt>
-                                    <dd class="payment-dd">
-                                        <input type="text" name="card_num" class="validate[required] payment_form" value="" placeholder="16桁のカード番号">
-                                    </dd>
-                                  </dl>
-                                  <dl class="payment-dl">
-                                    <dt class="payment-dt">有効期限 <span class="">*</span></dt>
-                                    <dd class="payment-dd">
-                                        <input type="text" name="card_expiry-y" class="validate[required] expiry" value="" placeholder="例) 10">
-                                        <span>/</span>
-                                        <input type="text" name="card_expiry-m" class="validate[required] expiry" value="" placeholder="例) 23">
-                                    </dd>
-                                  </dl>
-                                  <dl class="payment-dl">
-                                    <dt class="payment-dt">セキュリティコード <span class="">*</span></dt>
-                                    <dd class="payment-dd">
-                                        <input type="text" name="card_cvc" class="validate[required] payment_form" value="" placeholder="例) 123">
-                                    </dd>
-                                  </dl>
+                                @csrf
+                                <div class="form-group">
+                                    <label for="name">カード名義</label>
+                                    <input type="text" name="cardName" id="cardName" class="form-control" value="" placeholder="カード名義を入力">
                                 </div>
-                                <button id="submit" class="payment_submit">
-                                  <div class="spinner hidden" id="spinner"></div>
-                                  <span id="button-text" class="payment_submit--text">確認画面へ</span>
-                                </button>
+                                <div class="form-group">
+                                    <label for="name">カード番号</label>
+                                    <div id="cardNumber"></div>
+                                </div>
+
+                                <div class="form-group">
+                                    <label for="name">セキュリティコード</label>
+                                    <div id="securityCode"></div>
+                                </div>
+
+                                <div class="form-group">
+                                    <label for="name">有効期限</label>
+                                    <div id="expiration"></div>
+                                </div>
+                                <div class="form-group">
+                                    <button type="submit" id="create_token" class="btn btn-primary">確認画面へ</button>
+                                </div>
                                 <div id="payment-message" class="hidden"></div>
-                            </form>
+                            </form><!--stripe-->
+                            <!--stripe.js-->
+                            <script src="https://js.stripe.com/v3/"></script>
+                            <script src="{{asset('/assets/js/payment.js')}}"></script>
+                            
                             <!--後払いペイディ決済フォーム-->
                             <form id="paidy-form" class="paidy-pay">
                                 <div class="paidy-pay_view">
@@ -862,72 +856,6 @@
                 doSubmit();
             }
         });
-    </script>
-    <script>
-        /*stripe.js*/
-        function dosubmit(){
-            var stripe = stripe('pk_test_51L7afBAkBFuJeEP5ll7bebbFS8etadBjgz1tWH8VEl1e6LhsUmvOScIPuYf9fI73hE3equWFMZOvwNfc4LdoJx7L00jhnYhL69');
-            var elements = stripe.elements();
-
-            var elementStyles = {
-                base: {
-                    fontSize: '14px',
-                },
-                invalid: {
-                    color: '#eb1c26',
-                }
-            }
-            
-            var elementClasses = {
-                focus: 'is-focused',
-                empty: 'is-empty',
-                invalid: 'is-invalid'
-            }
-            
-            var cardNumber = elements.create('cardNumber', {
-                style: elementStyles,
-                classes: elementClasses,
-            });
-
-            var cardNumber = elements.create('cardNumber');
-            cardNumber.mount('#card_number');
-
-            cardNumber.addEventListener('change', function(event) {
-                var displayError = document.getElementById('card_errors');
-                if (event.error) {
-                    displayError.textContent = event.error.message;
-                } else {
-                    displayError.textContent = '';
-                }
-            });
-            form.addEventListener('submit', function(event) {
-                event.preventDefault();
-                var errorElement = document.getElementById('card_errors');
-                if (event.error) {
-                    errorElement.textContent = event.error.message;
-                } else {
-                    errorElement.textContent = '';
-                }
-            
-                stripe.createToken(cardNumber).then(function(result) {
-                    if (result.error) {
-                        errorElement.textContent = result.error.message;
-                    } else {
-                        stripeSubmit(result.token);
-                    }
-                });
-            });
-            
-            function stripeSubmit(token) {
-                var form = document.getElementById('form1');
-                    var hiddenInput = document.createElement('input');
-                    hiddenInput.setAttribute('type', 'hidden');
-                    hiddenInput.setAttribute('name', 'stripeToken');
-                    hiddenInput.setAttribute('value', token.id);
-                    form.appendChild(hiddenInput);
-                    form.submit();
-            }
-        }
     </script>
     <script>
         //フリガナ自動入力

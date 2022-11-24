@@ -18,6 +18,12 @@ Route::get('/', function () {
     return view('welcome');
 });
 
+Route::get('payment', 'PaymentController@getCurrentPayment')->name('payment');
+
+Route::get('kessai', 'PaymentController@getPaymentForm')->name('kessai');
+
+Route::post('store', 'PaymentController@storePaymentInfo')->name('store');
+
 Route::get('/', function () {
     return view('kessai');
 });
