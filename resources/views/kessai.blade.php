@@ -8,7 +8,7 @@
     <title>ぐっとWifi</title>
     <link rel="stylesheet" href="{{ asset('/assets/css/reset.css') }}">
     <link rel="stylesheet" href="{{ asset('/assets/css/validationEngine.jquery.css') }}">
-    <link rel="stylesheet" href="{{ asset('/assets/css/contents.css') }}">
+    <link rel="stylesheet" href="{{ mix('/assets/css/contents.css') }}">
     <link rel="stylesheet" href="{{ asset('/assets/css/tablet.css') }}">
     <link rel="stylesheet" href="{{ asset('/assets/css/smart.css') }}">
     <script src="{{ url('https://code.jquery.com/jquery-1.11.3.min.js')}}"></script>
