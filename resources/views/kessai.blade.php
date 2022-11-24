@@ -821,10 +821,6 @@
                 </div>
             </div>
         </div>
-        <div>
-            <label for="upload">写真を撮影してアップロードする</label>
-            <input id="upload" type="file" name="image" accept="image/*" capture="camera">
-        </div>
         <div id="footer"> 
             <div class="footer-inner">
                 Copyright ぐっとWifi. All Right Reserved.
