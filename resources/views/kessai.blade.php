@@ -31,7 +31,7 @@
         <div id="contents">
             <div id="contents_in">
                 <div id="n_area_00" class="navi_area center">
-                    <img src="{{ secure_asset('/assets/img/form_flow01_pc.png') }}" style="max-width: 700px;width: 100%;">
+                    <img src="{{ asset('/assets/img/form_flow01_pc.png') }}" style="max-width: 700px;width: 100%;">
                 </div>
                 <div id="n_area_10" class="navi_area center">
                     <img src="{{ secure_asset('/assets/img/form_flow01_sp.png')}}" style="width: 100%;">
