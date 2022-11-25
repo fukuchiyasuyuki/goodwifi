@@ -132,30 +132,28 @@
         border-radius: 6px;
         width: 300px;
       }
-      
-      .payment_form{
-        height: auto;
-        border: 0;
-        padding: 8px;
+      .payment_form--dl{
+        display: flex;
+      }
+      .payment_form--span{
+        color: red;
+      }
+      .payment_form--dt{
+        width: 240px;
+        padding: 15px 0px;
+        font-weight: bold;
         font-size: 16px;
-        font-family: Arial, sans-serif;
-        color: #484848;
+      }
+      
+      .payment_form--dd{
+        height: auto;
+        margin: 15px 0px;
         border: solid 1px #ccc;
         border-radius: 6px;
+        padding: 8px;
         width: 300px;
       }
-      
-      .expiry{
-        height: auto;
-        border: 0;
-        padding: 8px;
-        font-size: 16px;
-        font-family: Arial, sans-serif;
-        color: #484848;
-        border: solid 1px #ccc;
-        border-radius: 6px;
-        width: 132px;
-      }
+    
     .formError .formErrorContent {
         min-width: auto!important;
     }

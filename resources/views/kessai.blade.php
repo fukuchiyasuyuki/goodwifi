@@ -702,27 +702,40 @@
                                 <label for="paidy" class="radio-label"><input type="radio" name="pay" class="radio-item" id="paidy" onclick="payselect()">あと払いペイディ</label>
                             </div>
                             <!--クレジットカード決済フォーム(stripe)-->
-                            <form id="form_payment" action="{{route('store')}}" method="post">
+                            <form id="form_payment"  class="payment_form" action="{{route('user.payment.store')}}" method="POST">
                                 <img src="{{ asset('/assets/img/cc_payments.jpg')}}">
-                                @csrf
-                                <div class="form-group">
-                                    <label for="name">カード名義</label>
-                                    <input type="text" name="cardName" id="cardName" class="form-control" value="" placeholder="カード名義を入力">
-                                </div>
-                                <div class="form-group">
-                                    <label for="name">カード番号</label>
-                                    <div id="cardNumber"></div>
-                                </div>
-
-                                <div class="form-group">
-                                    <label for="name">セキュリティコード</label>
-                                    <div id="securityCode"></div>
-                                </div>
-
-                                <div class="form-group">
-                                    <label for="name">有効期限</label>
-                                    <div id="expiration"></div>
-                                </div>
+                                <dl class="payment_form--dl">
+                                    <dt class="payment_form--dt">
+                                        <label for="cardName">カード名義 <span class="payment_form--span">*</span></label>
+                                    </dt>
+                                    <dd>
+                                        <input type="text" name="card_Name" id="cardName" value="" placeholder="TARO YAMADA" class="payment_form--input">
+                                    </dd>
+                                </dl>
+                                <dl class="payment_form--dl">
+                                    <dt class="payment_form--dt">
+                                        <label for="cardNumber">カード番号 <span class="payment_form--span">*</span></label>
+                                    </dt>
+                                    <dd class="payment_form--dd">
+                                        <div id="cardNumber" class="payment_form--item"></div>
+                                    </dd>
+                                </dl>
+                                <dl class="payment_form--dl">
+                                    <dt class="payment_form--dt">
+                                        <label for="expiration">有効期限 <span class="payment_form--span">*</span></label>
+                                    </dt>
+                                    <dd class="payment_form--dd">
+                                        <div id="expiration" class="payment_form--item"></div>
+                                    </dd>
+                                </dl>
+                                <dl class="payment_form--dl">
+                                    <dt class="payment_form--dt">
+                                        <label for="securityCode">セキュリティコード <span class="payment_form--span">*</span></label>
+                                    </dt>
+                                    <dd class="payment_form--dd">
+                                        <div id="securityCode" class="payment_form--item"></div>
+                                    </dd>
+                                </dl>
                                 <div class="form-group">
                                     <button type="submit" id="create_token" class="btn btn-primary">確認画面へ</button>
                                 </div>
@@ -730,7 +743,11 @@
                             </form><!--stripe-->
                             <!--stripe.js-->
                             <script src="https://js.stripe.com/v3/"></script>
-                            <script src="{{asset('/assets/js/payment.js')}}"></script>
+                            <script>
+                                var stripe_public_key = "{{ config('payment.stripe_public_key') }}";
+                            </script>
+                            <script src="{{asset('/assets/js/payment.js')}}">
+                            </script>
                             
                             <!--後払いペイディ決済フォーム-->
                             <form id="paidy-form" class="paidy-pay">
@@ -821,9 +838,9 @@
             </div>
         </div>
     </div>
-    <script src="{{ asset('js/jquery-ui.min.js')}}"></script>
-    <script src="{{ asset('js/jquery.ui.datepicker-ja.min.js')}}"></script>
-    <link rel="stylesheet" href="{{ asset('js/jquery-ui.css')}}">
+    <script src="{{ asset('/assets/js/jquery-ui.min.js')}}"></script>
+    <script src="{{ asset('/assets/js/jquery.ui.datepicker-ja.min.js')}}"></script>
+    <link rel="stylesheet" href="{{ asset('/assets/js/jquery-ui.css')}}">
     <script>
         function payselect(){
          let pay = document.getElementsByName("pay");
@@ -831,10 +848,10 @@
          let paidy_mail = document.getElementById("paidy_mail");
 
          if(pay[0].checked){
-          document.getElementById('payment-form').style.display = "";
+          document.getElementById('form_payment').style.display = "";
           document.getElementById('paidy-form').style.display = "none";
          }else if(pay[1].checked){
-          document.getElementById('payment-form').style.display = "none";
+          document.getElementById('form_payment').style.display = "none";
           document.getElementById('paidy-form').style.display = "";
 
           paidy_tel.value = document.getElementById("tel").value;

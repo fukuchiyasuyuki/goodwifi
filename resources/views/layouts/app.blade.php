@@ -26,6 +26,10 @@
                 </header>
             @endif
 
+            @if(request()->path()==='user/payment/form')
+                @include('parts.payment');
+            @endif
+
             <!-- Page Content -->
             <main>
                 {{ $slot }}
