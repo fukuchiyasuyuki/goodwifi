@@ -18,28 +18,19 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-Route::get('payment', 'PaymentController@getCurrentPayment')->name('payment');
-
-Route::get('kessai', 'PaymentController@getPaymentForm')->name('kessai');
-
-Route::post('store', 'PaymentController@storePaymentInfo')->name('store');
 
 Route::get('/', function () {
     return view('kessai');
 });
 
+Route::get('/user/payment', 'User\PaymentController@getCurrentPayment')->name('user.payment');
+Route::get('kessai', 'User\PaymentController@getPaymentForm')->name('kessai');
+Route::post('/user/payment/store', 'User\PaymentController@storePaymentInfo')->name('user.payment.store');
+
 Route::get('/dashboard', function () {
     return view('dashboard');
 })->middleware(['auth', 'verified'])->name('dashboard');
 
-Route::middleware('auth')->group(function () {
-    Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
-    Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
-    Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
-});
 
-Route::get('/subscription', function () {
-    return view('subscription');
-})->middleware(['auth'])->name('subscription');
 
 require __DIR__.'/auth.php';
